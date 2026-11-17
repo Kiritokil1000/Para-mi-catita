@@ -1,982 +1,723 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Un Recuerdo Especial Para Ti ❤️</title>
-    <!-- Tailwind CSS para diseño responsivo y moderno -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Playfair Display (elegante) + Plus Jakarta Sans (legible) + Caveat (manuscrita para Polaroids y carta) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <style>
-        /* ==========================================================================
-           ESTILOS PERSONALIZADOS Y ANIMACIONES ROMÁNTICAS
-           ========================================================================== */
-        :root {
-            --font-serif: 'Playfair Display', serif;
-            --font-sans: 'Plus Jakarta Sans', sans-serif;
-            --font-hand: 'Caveat', cursive;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Para Catita ❤️</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Dancing Script para títulos románticos, Inter para lectura limpia -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome para iconos elegantes -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-        body {
-            font-family: var(--font-sans);
-            background: linear-gradient(135deg, #fff5f7 0%, #ffe4e8 45%, #fdf2f0 100%);
-            min-height: 100vh;
-            overflow-x: hidden;
-            color: #4a2531;
-        }
+  <style>
+    :root {
+      --primary-rose: #f43f5e;
+      --deep-rose: #be123c;
+      --soft-pink: #ffe4e6;
+      --gold-seal: #d97706;
+    }
 
-        .font-serif-romantic { font-family: var(--font-serif); }
-        .font-handwriting { font-family: var(--font-hand); }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 50%, #fecdd3 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+      color: #4c0519;
+      -webkit-tap-highlight-color: transparent;
+    }
 
-        /* Efecto Cristal (Glassmorphism) */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.72);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.85);
-            box-shadow: 0 20px 40px -15px rgba(225, 29, 72, 0.14);
-        }
+    .font-romantic {
+      font-family: 'Dancing Script', cursive;
+    }
 
-        /* Corazones flotantes de fondo */
-        .floating-heart {
-            position: fixed;
-            bottom: -40px;
-            pointer-events: none;
-            z-index: 0;
-            opacity: 0;
-            animation: floatUp linear forwards;
-        }
+    /* Glassmorphism Card */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      box-shadow: 0 20px 40px -15px rgba(225, 29, 72, 0.18);
+    }
 
-        @keyframes floatUp {
-            0% {
-                transform: translateY(0) scale(0.8) rotate(0deg);
-                opacity: 0;
-            }
-            15% {
-                opacity: 0.45;
-            }
-            85% {
-                opacity: 0.35;
-            }
-            100% {
-                transform: translateY(-110vh) scale(1.15) rotate(25deg);
-                opacity: 0;
-            }
-        }
+    /* Animación de vibración suave cuando la clave es incorrecta */
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-8px); }
+      40%, 80% { transform: translateX(8px); }
+    }
+    .animate-shake {
+      animation: shake 0.45s cubic-bezier(.36,.07,.19,.97) both;
+    }
 
-        /* Animación de vibración cuando la contraseña es incorrecta */
-        @keyframes gentleShake {
-            0%, 100% { transform: translateX(0); }
-            20% { transform: translateX(-8px); }
-            40% { transform: translateX(8px); }
-            60% { transform: translateX(-6px); }
-            80% { transform: translateX(6px); }
-        }
-        .shake-error {
-            animation: gentleShake 0.45s cubic-bezier(.36,.07,.19,.97) both;
-        }
+    /* Corazones flotantes de fondo */
+    .floating-heart {
+      position: fixed;
+      bottom: -50px;
+      pointer-events: none;
+      z-index: 0;
+      animation: floatUp linear forwards;
+      opacity: 0.6;
+    }
 
-        /* Latido suave para iconos de corazón */
-        @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
-            25% { transform: scale(1.12); }
-            45% { transform: scale(0.98); }
-            65% { transform: scale(1.08); }
-        }
-        .animate-heartbeat {
-            animation: heartbeat 2.2s infinite ease-in-out;
-        }
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) scale(0.8) rotate(0deg);
+        opacity: 0;
+      }
+      15% {
+        opacity: 0.65;
+      }
+      85% {
+        opacity: 0.65;
+      }
+      100% {
+        transform: translateY(-110vh) scale(1.2) rotate(360deg);
+        opacity: 0;
+      }
+    }
 
-        /* Estilo Polaroid */
-        .polaroid-card {
-            background: #ffffff;
-            padding: 12px 12px 22px 12px;
-            box-shadow: 0 10px 25px -5px rgba(74, 37, 49, 0.12), 0 4px 10px -2px rgba(74, 37, 49, 0.06);
-            transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
-        }
-        .polaroid-card:hover {
-            transform: translateY(-4px) rotate(0deg) !important;
-            box-shadow: 0 18px 32px -8px rgba(225, 29, 72, 0.2);
-        }
+    /* Lluvia de corazones al desbloquear o tocar "Te amo" */
+    .burst-heart {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      animation: burstFall 2.6s ease-out forwards;
+    }
 
-        /* Sobre de carta interactivo */
-        .envelope-wrapper {
-            perspective: 1000px;
-        }
-        .envelope-flap {
-            transform-origin: top;
-            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1), z-index 0.2s;
-        }
-        .envelope-open .envelope-flap {
-            transform: rotateX(180deg);
-            z-index: 0;
-        }
-        .letter-sheet {
-            transition: all 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-        }
+    @keyframes burstFall {
+      0% {
+        transform: translate(0, 0) scale(0.5) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(var(--tx), var(--ty)) scale(1.3) rotate(var(--rot));
+        opacity: 0;
+      }
+    }
 
-        /* Partículas de explosión de corazones / confeti */
-        .burst-particle {
-            position: fixed;
-            pointer-events: none;
-            z-index: 100;
-            will-change: transform, opacity;
-        }
+    /* Estilo Polaroid */
+    .polaroid-card {
+      background: #ffffff;
+      padding: 12px 12px 26px 12px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px -5px rgba(136, 19, 55, 0.14), 0 4px 10px -2px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+    }
+    .polaroid-card:hover {
+      transform: translateY(-4px) scale(1.01);
+      box-shadow: 0 18px 30px -8px rgba(225, 29, 72, 0.22);
+    }
 
-        /* Ocultar scrollbar en modales si es necesario */
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-    </style>
+    /* Sobre animado con sello dorado */
+    .envelope-container {
+      perspective: 1000px;
+    }
+    .envelope-flap {
+      transform-origin: top;
+      transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1), z-index 0.2s;
+    }
+    .envelope-open .envelope-flap {
+      transform: rotateX(180deg);
+      z-index: 1;
+    }
+    .letter-paper {
+      transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.5s ease;
+    }
+
+    /* Transiciones suaves entre pantallas */
+    .fade-in-up {
+      animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
 </head>
-<body class="antialiased selection:bg-rose-200 selection:text-rose-900">
+<body class="relative selection:bg-rose-200 selection:text-rose-900">
 
-    <!-- Contenedor de corazones flotantes sutiles en el fondo -->
-    <div id="floating-hearts-container" aria-hidden="true"></div>
+  <!-- Contenedor de corazones flotantes de fondo -->
+  <div id="hearts-bg-container" aria-hidden="true"></div>
 
-    <!-- Botón discreto de Personalización (arriba a la derecha) -->
-    <button id="open-customizer-btn" 
-            title="Personalizar textos, clave y fotos"
-            class="fixed top-4 right-4 z-40 flex items-center gap-1.5 px-3 py-2 rounded-full bg-white/80 hover:bg-white text-rose-700 text-xs font-medium shadow-sm border border-rose-200/80 backdrop-blur-md transition-all active:scale-95">
-        <svg class="w-3.5 h-3.5 text-rose-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-        </svg>
-        <span>Personalizar</span>
-    </button>
+  <!-- ===================================================================== -->
+  <!-- PANTALLA 1: BLOQUEO CON CONTRASEÑA                                    -->
+  <!-- ===================================================================== -->
+  <main id="lock-screen" class="relative z-10 min-h-screen flex items-center justify-center p-4">
+    <div id="lock-card" class="glass-card w-full max-w-sm rounded-3xl p-7 text-center transition-all">
+      
+      <!-- Espacio Circular para Foto de Portada -->
+      <div class="relative w-32 h-32 mx-auto mb-5">
+        <div class="w-full h-full rounded-full overflow-hidden border-4 border-white shadow-lg bg-rose-100 flex items-center justify-center relative group">
+          <!-- FOTO PORTADA: Si subes una foto a GitHub llamada "portada.jpg", cambia src="" por src="portada.jpg" -->
+          <img 
+            id="cover-preview" 
+            src="" 
+            alt="Foto de portada" 
+            class="w-full h-full object-cover hidden"
+            onerror="this.classList.add('hidden'); document.getElementById('cover-placeholder').classList.remove('hidden');"
+          />
+          <div id="cover-placeholder" class="flex flex-col items-center justify-center text-rose-400 p-2">
+            <i class="fa-solid fa-heart text-3xl mb-1 animate-pulse text-rose-500"></i>
+            <span class="text-[10px] font-medium uppercase tracking-wider text-rose-400">Nuestra Foto</span>
+          </div>
+        </div>
 
-    <!-- ==========================================================================
-         1. PANTALLA DE BLOQUEO (ACCESO CON CONTRASEÑA)
-         ========================================================================== -->
-    <main id="lock-screen" class="relative z-10 min-h-screen flex items-center justify-center p-5 transition-all duration-700">
-        <div id="lock-card" class="glass-card w-full max-w-md rounded-3xl p-6 sm:p-8 text-center relative overflow-hidden">
+        <!-- Botón de cámara para subir foto de portada desde el navegador -->
+        <label for="cover-input" title="Subir foto de portada" class="absolute bottom-0 right-0 w-9 h-9 bg-rose-500 hover:bg-rose-600 active:scale-95 text-white rounded-full flex items-center justify-center shadow-md cursor-pointer border-2 border-white transition">
+          <i class="fa-solid fa-camera text-sm"></i>
+        </label>
+        <input id="cover-input" type="file" accept="image/*" class="hidden" onchange="handleCoverUpload(event)" />
+      </div>
+
+      <!-- Título y Pista -->
+      <h1 class="font-romantic text-4xl font-bold text-rose-600 mb-1">Para Catita</h1>
+      <p class="text-xs font-medium text-rose-500/90 bg-rose-100/80 inline-block px-3 py-1 rounded-full mb-6">
+        <i class="fa-solid fa-key mr-1 text-[10px]"></i> Nuestra fecha especial - DDMMAAAA
+      </p>
+
+      <!-- Formulario de Contraseña -->
+      <form id="unlock-form" onsubmit="checkPassword(event)" class="space-y-4">
+        <div class="relative">
+          <input 
+            id="password-input" 
+            type="password" 
+            inputmode="numeric"
+            maxlength="8"
+            placeholder="••••••••" 
+            autocomplete="off"
+            class="w-full text-center tracking-[0.35em] text-xl font-semibold bg-white/90 border-2 border-rose-200 focus:border-rose-500 focus:outline-none rounded-2xl py-3.5 px-4 text-rose-900 placeholder-rose-300 shadow-inner transition"
+          />
+        </div>
+
+        <!-- Mensaje de error tierno -->
+        <p id="error-msg" class="text-xs font-medium text-rose-600 min-h-[18px] opacity-0 transition-opacity duration-300">
+          Esa no es nuestra fecha secreta, intenta de nuevo mi amor ❤️
+        </p>
+
+        <button 
+          type="submit" 
+          class="w-full bg-gradient-to-r from-rose-500 to-pink-600 hover:from-rose-600 hover:to-pink-700 active:scale-[0.98] text-white font-semibold py-3.5 px-6 rounded-2xl shadow-lg shadow-rose-500/30 transition flex items-center justify-center gap-2 text-base"
+        >
+          <span>Abrir mi sorpresa</span>
+          <i class="fa-solid fa-heart"></i>
+        </button>
+      </form>
+    </div>
+  </main>
+
+  <!-- ===================================================================== -->
+  <!-- PANTALLA 2: EXPERIENCIA ROMÁNTICA DESBLOQUEADA                        -->
+  <!-- ===================================================================== -->
+  <section id="unlocked-content" class="hidden relative z-10 max-w-lg mx-auto px-4 py-8 pb-20 space-y-8">
+    
+    <!-- Encabezado -->
+    <header class="text-center space-y-2 fade-in-up">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/80 text-rose-600 text-xs font-semibold shadow-sm border border-rose-100">
+        <i class="fa-solid fa-sparkles text-amber-500"></i>
+        <span>Nuestra Historia</span>
+      </div>
+      <h1 class="font-romantic text-5xl font-bold text-rose-600 drop-shadow-sm">
+        Tú y Yo, Catita
+      </h1>
+      <p class="text-sm text-rose-800/80 max-w-xs mx-auto">
+        Cada segundo desde aquel 8 de agosto de 2025 ha sido el mejor regalo de mi vida.
+      </p>
+    </header>
+
+    <!-- 1. CONTADOR DE TIEMPO JUNTOS EN TIEMPO REAL -->
+    <div class="glass-card rounded-3xl p-6 text-center fade-in-up" style="animation-delay: 0.1s;">
+      <h2 class="text-xs font-bold uppercase tracking-widest text-rose-500 mb-4 flex items-center justify-center gap-2">
+        <i class="fa-regular fa-clock"></i> Tiempo juntos desde el 08/08/2025 • 18:18
+      </h2>
+      
+      <div class="grid grid-cols-4 gap-2.5">
+        <div class="bg-white/90 rounded-2xl p-3 shadow-sm border border-rose-100">
+          <span id="days" class="block text-2xl sm:text-3xl font-bold text-rose-600 tabular-nums">0</span>
+          <span class="text-[11px] font-medium text-rose-400 uppercase">Días</span>
+        </div>
+        <div class="bg-white/90 rounded-2xl p-3 shadow-sm border border-rose-100">
+          <span id="hours" class="block text-2xl sm:text-3xl font-bold text-rose-600 tabular-nums">00</span>
+          <span class="text-[11px] font-medium text-rose-400 uppercase">Horas</span>
+        </div>
+        <div class="bg-white/90 rounded-2xl p-3 shadow-sm border border-rose-100">
+          <span id="minutes" class="block text-2xl sm:text-3xl font-bold text-rose-600 tabular-nums">00</span>
+          <span class="text-[11px] font-medium text-rose-400 uppercase">Min</span>
+        </div>
+        <div class="bg-white/90 rounded-2xl p-3 shadow-sm border border-rose-100">
+          <span id="seconds" class="block text-2xl sm:text-3xl font-bold text-rose-500 tabular-nums">00</span>
+          <span class="text-[11px] font-medium text-rose-400 uppercase">Seg</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. SOBRE DE CARTA ANIMADO CON SELLO DORADO -->
+    <div class="glass-card rounded-3xl p-6 fade-in-up" style="animation-delay: 0.2s;">
+      <div class="text-center mb-4">
+        <h2 class="font-romantic text-3xl font-bold text-rose-600">Una carta para ti</h2>
+        <p class="text-xs text-rose-700/75">Toca el sello dorado para abrir el sobre</p>
+      </div>
+
+      <!-- Estructura interactiva del sobre -->
+      <div id="envelope-wrapper" class="envelope-container relative max-w-md mx-auto">
+        <!-- Sobre cerrado / cabecera -->
+        <div 
+          id="envelope-box" 
+          onclick="toggleEnvelope()"
+          class="relative bg-gradient-to-b from-rose-100 to-rose-200 border-2 border-rose-300/80 rounded-2xl p-6 cursor-pointer shadow-md transition-all duration-500 overflow-hidden"
+        >
+          <!-- Solapa triangular decorativa superior -->
+          <div class="envelope-flap absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-rose-300/90 to-rose-200/90 rounded-t-xl border-b border-rose-300/60 flex items-end justify-center pb-2 z-20 pointer-events-none">
+          </div>
+
+          <!-- Sello dorado central -->
+          <div id="gold-seal" class="relative z-30 mx-auto my-4 w-14 h-14 rounded-full bg-gradient-to-br from-amber-300 via-amber-500 to-yellow-600 shadow-lg border-2 border-amber-200 flex items-center justify-center text-white transform transition-transform duration-300 hover:scale-110 active:scale-95">
+            <i class="fa-solid fa-heart text-xl drop-shadow"></i>
+          </div>
+
+          <p id="envelope-hint" class="text-center text-xs font-semibold text-rose-700 tracking-wide uppercase">
+            Toca para abrir
+          </p>
+
+          <!-- Papel de la carta que se despliega -->
+          <div id="letter-content" class="hidden mt-4 bg-[#fffdf9] rounded-xl p-5 sm:p-6 shadow-inner border border-amber-100 text-left space-y-4">
+            <div class="flex items-center justify-between border-b border-rose-100 pb-2">
+              <span class="font-romantic text-2xl text-rose-600 font-bold">Mi querida Catita,</span>
+              <i class="fa-solid fa-feather-pointed text-rose-300"></i>
+            </div>
             
-            <!-- Brillo decorativo superior -->
-            <div class="absolute -top-24 -right-24 w-48 h-48 bg-rose-300/30 rounded-full blur-2xl pointer-events-none"></div>
-            <div class="absolute -bottom-24 -left-24 w-48 h-48 bg-amber-200/30 rounded-full blur-2xl pointer-events-none"></div>
-
-            <!-- Foto de portada romántica -->
-            <div class="relative mx-auto w-36 h-36 sm:w-40 sm:h-40 mb-5 group">
-                <div class="w-full h-full rounded-full p-1.5 bg-gradient-to-tr from-rose-400 via-pink-300 to-amber-200 shadow-lg">
-                    <div class="w-full h-full rounded-full overflow-hidden bg-rose-50 flex items-center justify-center relative">
-                        <img id="cover-photo-img" 
-                             src="" 
-                             alt="Nuestra foto" 
-                             class="w-full h-full object-cover hidden">
-                        <!-- Placeholder elegante si aún no cargan foto -->
-                        <div id="cover-photo-placeholder" class="flex flex-col items-center justify-center text-rose-400 p-3">
-                            <svg class="w-12 h-12 animate-heartbeat text-rose-500" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                            </svg>
-                            <span class="text-[11px] font-medium text-rose-500/80 mt-1">Tú & Yo</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Botón rápido para subir foto de portada directamente -->
-                <label for="quick-cover-upload" 
-                       title="Cambiar foto de portada"
-                       class="absolute bottom-1 right-1 w-9 h-9 rounded-full bg-white text-rose-600 shadow-md border border-rose-100 flex items-center justify-center cursor-pointer hover:bg-rose-50 transition-transform active:scale-90">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/>
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/>
-                    </svg>
-                </label>
-                <input type="file" id="quick-cover-upload" accept="image/*" class="hidden">
-            </div>
-
-            <!-- Icono de candado romántico -->
-            <div class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-rose-100/80 text-rose-600 mb-3">
-                <svg id="lock-icon" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
-                </svg>
-            </div>
-
-            <!-- Título y subtítulo -->
-            <h1 id="lock-title" class="font-serif-romantic text-2xl sm:text-3xl font-bold text-rose-950 tracking-tight mb-2">
-                Un recuerdo especial para ti
-            </h1>
-            <p class="text-sm text-rose-800/80 mb-5 leading-relaxed">
-                Este rincón guarda momentos que solo tú puedes abrir.
+            <p class="text-sm sm:text-base leading-relaxed text-stone-700 font-normal">
+              Desde el primer momento en que nuestros caminos se cruzaron, supe que mi vida había cambiado para mejor. Cada risa, cada momento juntos y cada segundo a tu lado se han convertido en mi lugar favorito en el mundo. Gracias por ser mi compañera, mi alegría y el amor de mi vida. Te amo infinito.
             </p>
 
-            <!-- Pista configurable -->
-            <div class="inline-block bg-rose-50/90 border border-rose-200/70 rounded-2xl px-4 py-2 mb-5">
-                <p id="lock-hint" class="text-xs font-medium text-rose-700">
-                    Pista: Nuestra fecha especial (DDMM)
-                </p>
+            <div class="pt-2 text-right">
+              <p class="font-romantic text-2xl text-rose-600 font-bold">Con todo mi amor ❤️</p>
             </div>
-
-            <!-- Formulario de contraseña -->
-            <form id="unlock-form" class="space-y-3.5">
-                <div class="relative">
-                    <input type="password" 
-                           id="password-input" 
-                           inputmode="numeric"
-                           placeholder="Escribe la clave secreta..." 
-                           autocomplete="off"
-                           class="w-full px-4 py-3.5 rounded-2xl bg-white/90 border border-rose-200 text-center text-lg font-semibold tracking-widest text-rose-950 placeholder:text-rose-300 placeholder:font-normal placeholder:tracking-normal focus:outline-none focus:ring-2 focus:ring-rose-400 focus:border-transparent transition-all">
-                </div>
-
-                <!-- Mensaje de error tierno -->
-                <p id="error-message" class="text-xs font-medium text-rose-600 h-4 opacity-0 transition-opacity duration-300">
-                    Mmm... esa no es, mi amor. ¡Inténtalo de nuevo! ❤️
-                </p>
-
-                <button type="submit" 
-                        class="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-rose-500 to-pink-600 hover:from-rose-600 hover:to-pink-700 text-white font-semibold text-sm shadow-lg shadow-rose-500/25 transition-all active:scale-[0.98] flex items-center justify-center gap-2">
-                    <span>Abrir sorpresa</span>
-                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/>
-                    </svg>
-                </button>
-            </form>
+          </div>
         </div>
-    </main>
+      </div>
+    </div>
 
-    <!-- ==========================================================================
-         2. CONTENIDO PRINCIPAL DESBLOQUEADO (EXPERIENCIA ROMÁNTICA)
-         ========================================================================== -->
-    <section id="main-content" class="hidden opacity-0 relative z-10 max-w-xl mx-auto px-4 pt-14 pb-20 space-y-10 transition-opacity duration-1000">
+    <!-- 3. GALERÍA POLAROID CON 4 ESPACIOS LIBRES -->
+    <div class="space-y-4 fade-in-up" style="animation-delay: 0.3s;">
+      <div class="text-center">
+        <h2 class="font-romantic text-3xl font-bold text-rose-600">Nuestros Recuerdos</h2>
+        <p class="text-xs text-rose-800/75">4 espacios especiales para nuestras fotos favoritas</p>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4">
         
-        <!-- Encabezado y Contador de Tiempo Juntos -->
-        <header class="text-center space-y-4">
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/80 border border-rose-200/70 text-xs font-semibold text-rose-600 shadow-sm">
-                <span class="w-2 h-2 rounded-full bg-rose-500 animate-ping"></span>
-                <span>Nuestra historia en tiempo real</span>
+        <!-- ==================== ESPACIO POLAROID 1 ==================== -->
+        <div class="polaroid-card flex flex-col justify-between">
+          <div class="relative aspect-square w-full bg-rose-50 rounded-lg overflow-hidden border border-rose-100 flex items-center justify-center group">
+            <!-- FOTO 1: Si subes "foto1.jpg" a GitHub, pon src="foto1.jpg" -->
+            <img 
+              id="photo-img-1" 
+              src="" 
+              alt="Recuerdo 1" 
+              onclick="openLightbox(this.src, 'Momento #1')"
+              class="w-full h-full object-cover hidden cursor-zoom-in"
+              onload="showPhotoState(1)"
+              onerror="showPlaceholderState(1)"
+            />
+            <div id="photo-placeholder-1" class="text-center p-3 flex flex-col items-center justify-center">
+              <i class="fa-regular fa-image text-2xl text-rose-300 mb-1.5"></i>
+              <span class="text-[11px] font-medium text-rose-400">Foto 1</span>
             </div>
 
-            <h2 id="main-heading" class="font-serif-romantic text-3xl sm:text-4xl font-bold text-rose-950 leading-tight">
-                Cada segundo a tu lado vale oro
-            </h2>
-            <p id="couple-subtitle" class="text-sm text-rose-800/80">
-                Desde el 8 de agosto de 2025, mi mundo es más bonito contigo.
-            </p>
-
-            <!-- Tarjeta del Contador -->
-            <div class="glass-card rounded-3xl p-5 sm:p-6 mt-4">
-                <p class="text-xs uppercase tracking-widest text-rose-500 font-semibold mb-4">
-                    Llevamos juntos
-                </p>
-                <div class="grid grid-cols-4 gap-2 sm:gap-3">
-                    <div class="bg-white/85 rounded-2xl p-3 border border-rose-100 shadow-sm">
-                        <span id="timer-days" class="block font-serif-romantic text-2xl sm:text-3xl font-bold text-rose-600">0</span>
-                        <span class="text-[11px] font-medium text-rose-900/70">Días</span>
-                    </div>
-                    <div class="bg-white/85 rounded-2xl p-3 border border-rose-100 shadow-sm">
-                        <span id="timer-hours" class="block font-serif-romantic text-2xl sm:text-3xl font-bold text-rose-600">00</span>
-                        <span class="text-[11px] font-medium text-rose-900/70">Horas</span>
-                    </div>
-                    <div class="bg-white/85 rounded-2xl p-3 border border-rose-100 shadow-sm">
-                        <span id="timer-minutes" class="block font-serif-romantic text-2xl sm:text-3xl font-bold text-rose-600">00</span>
-                        <span class="text-[11px] font-medium text-rose-900/70">Minutos</span>
-                    </div>
-                    <div class="bg-white/85 rounded-2xl p-3 border border-rose-100 shadow-sm">
-                        <span id="timer-seconds" class="block font-serif-romantic text-2xl sm:text-3xl font-bold text-rose-500">00</span>
-                        <span class="text-[11px] font-medium text-rose-900/70">Segundos</span>
-                    </div>
-                </div>
-            </div>
-        </header>
-
-        <!-- Galería de Recuerdos estilo Polaroid -->
-        <section class="space-y-4">
-            <div class="text-center">
-                <h3 class="font-serif-romantic text-2xl font-bold text-rose-950">Nuestros momentos favoritos</h3>
-                <p class="text-xs text-rose-700/80 mt-1">Toca cualquier foto para verla más de cerca</p>
-            </div>
-
-            <div id="polaroid-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
-                <!-- Las tarjetas Polaroid se renderizan dinámicamente desde JavaScript -->
-            </div>
-        </section>
-
-        <!-- Carta de Amor Interactiva en forma de Sobre -->
-        <section class="space-y-4 pt-2">
-            <div class="text-center">
-                <h3 class="font-serif-romantic text-2xl font-bold text-rose-950">Una carta para ti</h3>
-                <p id="envelope-instruction" class="text-xs text-rose-700/80 mt-1">Toca el sobre para abrirlo</p>
-            </div>
-
-            <div id="envelope-container" class="envelope-wrapper cursor-pointer select-none mx-auto max-w-md">
-                <!-- Sobre cerrado / animado -->
-                <div id="envelope-box" class="relative bg-gradient-to-b from-rose-200 to-rose-300 rounded-3xl p-1 shadow-xl border border-rose-300/80 overflow-hidden transition-all duration-500">
-                    
-                    <!-- Solapa superior del sobre -->
-                    <div id="envelope-flap" class="envelope-flap relative z-20 bg-gradient-to-b from-rose-400 to-rose-500 h-28 rounded-t-2xl flex items-center justify-center shadow-md"
-                         style="clip-path: polygon(0 0, 100% 0, 50% 85%);">
-                    </div>
-
-                    <!-- Sello de corazón en el centro del sobre -->
-                    <div id="envelope-seal" class="absolute top-16 left-1/2 -translate-x-1/2 z-30 w-12 h-12 rounded-full bg-amber-100 border-2 border-amber-300 shadow-md flex items-center justify-center text-rose-600 transition-transform duration-300 hover:scale-110">
-                        <svg class="w-6 h-6 animate-heartbeat" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                        </svg>
-                    </div>
-
-                    <!-- Cuerpo inferior del sobre (vista previa antes de abrir) -->
-                    <div id="envelope-closed-body" class="pt-6 pb-8 px-6 text-center bg-rose-100/90 rounded-b-2xl">
-                        <p class="font-handwriting text-2xl text-rose-900">Para la persona más especial...</p>
-                        <span class="inline-block mt-2 text-[11px] uppercase tracking-wider text-rose-600 font-semibold bg-white/80 px-3 py-1 rounded-full">
-                            Toca para leer 💌
-                        </span>
-                    </div>
-
-                    <!-- Hoja de la carta desplegada -->
-                    <div id="letter-content" class="letter-sheet hidden bg-[#fffdf9] rounded-2xl p-6 sm:p-8 m-2 shadow-inner border border-amber-100/80 text-left space-y-4">
-                        <div class="flex items-center justify-between border-b border-rose-100 pb-3">
-                            <span id="letter-greeting" class="font-handwriting text-3xl text-rose-700 font-bold">Mi amor,</span>
-                            <span class="text-xs text-rose-400 font-medium">Para siempre ❤️</span>
-                        </div>
-                        <div id="letter-body-text" class="text-sm sm:text-base text-rose-950/90 leading-relaxed whitespace-pre-line font-normal">
-                            <!-- El texto de la carta se carga desde JS -->
-                        </div>
-                        <div class="pt-3 text-right">
-                            <p id="letter-signature" class="font-handwriting text-2xl text-rose-700 font-bold">Con todo mi corazón, tuyo.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Botón Final "Te amo" con lluvia de corazones -->
-        <footer class="pt-6 pb-8 text-center space-y-4">
-            <button id="love-rain-btn" 
-                    class="group relative inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-rose-500 via-pink-500 to-rose-600 text-white font-bold text-lg shadow-xl shadow-rose-500/30 hover:shadow-rose-500/45 transition-all active:scale-95">
-                <span>Te amo</span>
-                <svg class="w-6 h-6 transition-transform group-hover:scale-125" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                </svg>
-            </button>
-            <p id="love-counter-msg" class="text-xs text-rose-700/75 h-4 transition-opacity"></p>
-        </footer>
-    </section>
-
-    <!-- ==========================================================================
-         MODAL 1: VISTA AMPLIADA DE FOTO POLAROID
-         ========================================================================== -->
-    <div id="photo-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-rose-950/75 backdrop-blur-sm p-4 transition-opacity">
-        <div class="bg-white rounded-3xl p-4 pb-6 max-w-md w-full shadow-2xl relative animate-[fadeIn_0.25s_ease-out]">
-            <button id="close-photo-modal" class="absolute -top-3 -right-3 w-9 h-9 rounded-full bg-rose-600 text-white shadow-lg flex items-center justify-center hover:bg-rose-700 active:scale-90">
-                ✕
-            </button>
-            <div class="aspect-square w-full rounded-2xl overflow-hidden bg-rose-50 mb-4">
-                <img id="modal-img" src="" alt="Recuerdo ampliado" class="w-full h-full object-cover">
-            </div>
-            <div class="text-center px-2">
-                <span id="modal-date" class="text-xs font-semibold uppercase tracking-wider text-rose-500"></span>
-                <p id="modal-caption" class="font-handwriting text-2xl sm:text-3xl text-rose-950 mt-1"></p>
-            </div>
+            <!-- Botón discreto para subir o cambiar la foto -->
+            <label for="photo-input-1" title="Subir foto 1" class="absolute bottom-2 right-2 w-8 h-8 bg-white/95 hover:bg-rose-500 text-rose-600 hover:text-white rounded-full shadow flex items-center justify-center cursor-pointer transition border border-rose-100">
+              <i class="fa-solid fa-plus text-xs"></i>
+            </label>
+            <input id="photo-input-1" type="file" accept="image/*" class="hidden" onchange="handlePolaroidUpload(event, 1)" />
+          </div>
+          <p class="font-romantic text-lg text-center text-rose-700 mt-2.5 truncate">Momento #1 ❤️</p>
         </div>
+
+        <!-- ==================== ESPACIO POLAROID 2 ==================== -->
+        <div class="polaroid-card flex flex-col justify-between">
+          <div class="relative aspect-square w-full bg-rose-50 rounded-lg overflow-hidden border border-rose-100 flex items-center justify-center group">
+            <!-- FOTO 2: Si subes "foto2.jpg" a GitHub, pon src="foto2.jpg" -->
+            <img 
+              id="photo-img-2" 
+              src="" 
+              alt="Recuerdo 2" 
+              onclick="openLightbox(this.src, 'Momento #2')"
+              class="w-full h-full object-cover hidden cursor-zoom-in"
+              onload="showPhotoState(2)"
+              onerror="showPlaceholderState(2)"
+            />
+            <div id="photo-placeholder-2" class="text-center p-3 flex flex-col items-center justify-center">
+              <i class="fa-regular fa-image text-2xl text-rose-300 mb-1.5"></i>
+              <span class="text-[11px] font-medium text-rose-400">Foto 2</span>
+            </div>
+
+            <label for="photo-input-2" title="Subir foto 2" class="absolute bottom-2 right-2 w-8 h-8 bg-white/95 hover:bg-rose-500 text-rose-600 hover:text-white rounded-full shadow flex items-center justify-center cursor-pointer transition border border-rose-100">
+              <i class="fa-solid fa-plus text-xs"></i>
+            </label>
+            <input id="photo-input-2" type="file" accept="image/*" class="hidden" onchange="handlePolaroidUpload(event, 2)" />
+          </div>
+          <p class="font-romantic text-lg text-center text-rose-700 mt-2.5 truncate">Momento #2 ✨</p>
+        </div>
+
+        <!-- ==================== ESPACIO POLAROID 3 ==================== -->
+        <div class="polaroid-card flex flex-col justify-between">
+          <div class="relative aspect-square w-full bg-rose-50 rounded-lg overflow-hidden border border-rose-100 flex items-center justify-center group">
+            <!-- FOTO 3: Si subes "foto3.jpg" a GitHub, pon src="foto3.jpg" -->
+            <img 
+              id="photo-img-3" 
+              src="" 
+              alt="Recuerdo 3" 
+              onclick="openLightbox(this.src, 'Momento #3')"
+              class="w-full h-full object-cover hidden cursor-zoom-in"
+              onload="showPhotoState(3)"
+              onerror="showPlaceholderState(3)"
+            />
+            <div id="photo-placeholder-3" class="text-center p-3 flex flex-col items-center justify-center">
+              <i class="fa-regular fa-image text-2xl text-rose-300 mb-1.5"></i>
+              <span class="text-[11px] font-medium text-rose-400">Foto 3</span>
+            </div>
+
+            <label for="photo-input-3" title="Subir foto 3" class="absolute bottom-2 right-2 w-8 h-8 bg-white/95 hover:bg-rose-500 text-rose-600 hover:text-white rounded-full shadow flex items-center justify-center cursor-pointer transition border border-rose-100">
+              <i class="fa-solid fa-plus text-xs"></i>
+            </label>
+            <input id="photo-input-3" type="file" accept="image/*" class="hidden" onchange="handlePolaroidUpload(event, 3)" />
+          </div>
+          <p class="font-romantic text-lg text-center text-rose-700 mt-2.5 truncate">Momento #3 🌸</p>
+        </div>
+
+        <!-- ==================== ESPACIO POLAROID 4 ==================== -->
+        <div class="polaroid-card flex flex-col justify-between">
+          <div class="relative aspect-square w-full bg-rose-50 rounded-lg overflow-hidden border border-rose-100 flex items-center justify-center group">
+            <!-- FOTO 4: Si subes "foto4.jpg" a GitHub, pon src="foto4.jpg" -->
+            <img 
+              id="photo-img-4" 
+              src="" 
+              alt="Recuerdo 4" 
+              onclick="openLightbox(this.src, 'Momento #4')"
+              class="w-full h-full object-cover hidden cursor-zoom-in"
+              onload="showPhotoState(4)"
+              onerror="showPlaceholderState(4)"
+            />
+            <div id="photo-placeholder-4" class="text-center p-3 flex flex-col items-center justify-center">
+              <i class="fa-regular fa-image text-2xl text-rose-300 mb-1.5"></i>
+              <span class="text-[11px] font-medium text-rose-400">Foto 4</span>
+            </div>
+
+            <label for="photo-input-4" title="Subir foto 4" class="absolute bottom-2 right-2 w-8 h-8 bg-white/95 hover:bg-rose-500 text-rose-600 hover:text-white rounded-full shadow flex items-center justify-center cursor-pointer transition border border-rose-100">
+              <i class="fa-solid fa-plus text-xs"></i>
+            </label>
+            <input id="photo-input-4" type="file" accept="image/*" class="hidden" onchange="handlePolaroidUpload(event, 4)" />
+          </div>
+          <p class="font-romantic text-lg text-center text-rose-700 mt-2.5 truncate">Momento #4 💫</p>
+        </div>
+
+      </div>
     </div>
 
-    <!-- ==========================================================================
-         MODAL 2: PANEL DE PERSONALIZACIÓN EN VIVO (PARA PROBAR Y EDITAR FÁCILMENTE)
-         ========================================================================== -->
-    <div id="customizer-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-rose-950/60 backdrop-blur-sm p-4">
-        <div class="bg-white rounded-3xl max-w-lg w-full max-h-[88vh] flex flex-col shadow-2xl overflow-hidden border border-rose-100">
-            <!-- Header Modal -->
-            <div class="px-6 py-4 bg-rose-50 border-b border-rose-100 flex items-center justify-between">
-                <div>
-                    <h3 class="font-serif-romantic text-xl font-bold text-rose-950">Personalizar Sorpresa</h3>
-                    <p class="text-xs text-rose-700">Los cambios se guardan en este navegador</p>
-                </div>
-                <button id="close-customizer-btn" class="w-8 h-8 rounded-full bg-white text-rose-700 hover:bg-rose-100 flex items-center justify-center font-bold">✕</button>
-            </div>
+    <!-- 4. BOTÓN INTERACTIVO "TE AMO" CON FRASES ROMÁNTICAS -->
+    <div class="glass-card rounded-3xl p-6 text-center space-y-4 fade-in-up" style="animation-delay: 0.4s;">
+      <div class="min-h-[64px] flex items-center justify-center px-2">
+        <p id="love-quote" class="font-romantic text-2xl sm:text-3xl text-rose-700 font-semibold transition-all duration-300">
+          "Contigo descubrí lo que de verdad significa amar y ser amado."
+        </p>
+      </div>
 
-            <!-- Cuerpo desplazable -->
-            <div class="p-6 overflow-y-auto space-y-5 text-sm">
-                <!-- Contraseña y Pista -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div>
-                        <label class="block text-xs font-semibold text-rose-900 mb-1">Contraseña secreta</label>
-                        <input type="text" id="cfg-password" class="w-full px-3 py-2 rounded-xl border border-rose-200 focus:outline-none focus:ring-2 focus:ring-rose-400">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-rose-900 mb-1">Fecha inicio relación</label>
-                        <input type="datetime-local" id="cfg-start-date" class="w-full px-3 py-2 rounded-xl border border-rose-200 focus:outline-none focus:ring-2 focus:ring-rose-400">
-                    </div>
-                </div>
-
-                <div>
-                    <label class="block text-xs font-semibold text-rose-900 mb-1">Pista en pantalla de bloqueo</label>
-                    <input type="text" id="cfg-hint" class="w-full px-3 py-2 rounded-xl border border-rose-200 focus:outline-none focus:ring-2 focus:ring-rose-400">
-                </div>
-
-                <div>
-                    <label class="block text-xs font-semibold text-rose-900 mb-1">Título pantalla de bloqueo</label>
-                    <input type="text" id="cfg-lock-title" class="w-full px-3 py-2 rounded-xl border border-rose-200 focus:outline-none focus:ring-2 focus:ring-rose-400">
-                </div>
-
-                <div>
-                    <label class="block text-xs font-semibold text-rose-900 mb-1">Foto de portada (subir archivo o pegar URL)</label>
-                    <div class="flex gap-2">
-                        <input type="text" id="cfg-cover-url" placeholder="https://..." class="flex-1 px-3 py-2 rounded-xl border border-rose-200 text-xs">
-                        <label class="px-3 py-2 rounded-xl bg-rose-100 text-rose-700 font-semibold text-xs cursor-pointer hover:bg-rose-200 flex items-center">
-                            Subir
-                            <input type="file" id="cfg-cover-file" accept="image/*" class="hidden">
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Fotos Polaroid -->
-                <div class="space-y-3 pt-2 border-t border-rose-100">
-                    <p class="text-xs font-bold uppercase tracking-wider text-rose-500">Galería Polaroid (4 recuerdos)</p>
-                    <div id="cfg-memories-list" class="space-y-3">
-                        <!-- Se llena dinámicamente -->
-                    </div>
-                </div>
-
-                <!-- Carta de amor -->
-                <div class="space-y-2 pt-2 border-t border-rose-100">
-                    <label class="block text-xs font-semibold text-rose-900">Saludo de la carta</label>
-                    <input type="text" id="cfg-letter-greeting" class="w-full px-3 py-2 rounded-xl border border-rose-200">
-                    
-                    <label class="block text-xs font-semibold text-rose-900">Mensaje de la carta</label>
-                    <textarea id="cfg-letter-body" rows="4" class="w-full px-3 py-2 rounded-xl border border-rose-200 text-xs leading-relaxed"></textarea>
-
-                    <label class="block text-xs font-semibold text-rose-900">Firma</label>
-                    <input type="text" id="cfg-letter-signature" class="w-full px-3 py-2 rounded-xl border border-rose-200">
-                </div>
-            </div>
-
-            <!-- Footer Modal -->
-            <div class="px-6 py-3.5 bg-rose-50 border-t border-rose-100 flex items-center justify-between gap-2">
-                <button id="reset-config-btn" type="button" class="text-xs text-rose-600 hover:underline font-medium">
-                    Restaurar valores
-                </button>
-                <div class="flex gap-2">
-                    <button id="save-config-btn" type="button" class="px-5 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-semibold text-xs shadow-md active:scale-95">
-                        Guardar cambios
-                    </button>
-                </div>
-            </div>
-        </div>
+      <button 
+        id="love-btn"
+        onclick="triggerLoveBurst(event)"
+        class="inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-rose-500 via-pink-500 to-rose-600 hover:from-rose-600 hover:to-pink-600 active:scale-95 text-white font-bold py-3.5 px-8 rounded-full shadow-lg shadow-rose-500/35 transition text-base"
+      >
+        <i class="fa-solid fa-heart animate-bounce"></i>
+        <span>Te amo</span>
+      </button>
     </div>
 
-    <!-- ==========================================================================
-         LÓGICA JAVASCRIPT (BIEN ESTRUCTURADA Y COMENTADA EN ESPAÑOL)
-         ========================================================================== -->
-    <script>
-        /**
-         * ========================================================================
-         * 1. CONFIGURACIÓN PRINCIPAL (EDITA AQUÍ TUS DATOS POR DEFECTO)
-         * ========================================================================
-         * Si subes este archivo a internet (Netlify, GitHub Pages, Vercel), 
-         * estos serán los valores que verá tu pareja al escanear el código QR.
-         */
-        const CONFIGURACION_POR_DEFECTO = {
-            // 🔑 CONTRASEÑA SECRETA PARA DESBLOQUEAR (Por defecto: "0808")
-            password: "0808",
+  </section>
 
-            // 📝 TEXTOS DE LA PANTALLA DE BLOQUEO
-            lockTitle: "Un recuerdo especial para ti",
-            lockHint: "Pista: Nuestra fecha especial (DDMM)",
+  <!-- ===================================================================== -->
+  <!-- MODAL LIGHTBOX PARA AMPLIAR FOTOS POLAROID                            -->
+  <!-- ===================================================================== -->
+  <div id="lightbox-modal" onclick="closeLightbox()" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="relative max-w-md w-full bg-white p-3 pb-6 rounded-2xl shadow-2xl" onclick="event.stopPropagation()">
+      <button onclick="closeLightbox()" class="absolute -top-3 -right-3 w-9 h-9 bg-rose-600 text-white rounded-full shadow-lg flex items-center justify-center hover:bg-rose-700 transition">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <img id="lightbox-img" src="" alt="Foto ampliada" class="w-full max-h-[70vh] object-contain rounded-xl bg-rose-50" />
+      <p id="lightbox-caption" class="font-romantic text-2xl text-center text-rose-600 mt-3 font-bold"></p>
+    </div>
+  </div>
 
-            // 🖼️ FOTO DE PORTADA (Puedes poner una URL directa o dejar vacío para el icono de corazón)
-            coverPhoto: "",
+  <!-- ===================================================================== -->
+  <!-- LÓGICA JAVASCRIPT                                                     -->
+  <!-- ===================================================================== -->
+  <script>
+    // 1. CONFIGURACIÓN PRINCIPAL
+    const PASSWORD_CORRECTA = "08082025";
+    const FECHA_INICIO = new Date("2025-08-08T18:18:00");
 
-            // 📅 FECHA DE INICIO DE LA RELACIÓN (Formato: "AAAA-MM-DDTHH:MM:SS")
-            // Por defecto: 8 de agosto de 2025 a las 00:00 hrs
-            startDate: "2025-08-08T00:00:00",
-            mainHeading: "Cada segundo a tu lado vale oro",
-            coupleSubtitle: "Desde el 8 de agosto de 2025, mi mundo es más bonito contigo.",
+    const FRASES_ROMANTICAS = [
+      "Contigo descubrí lo que de verdad significa amar y ser amado.",
+      "No importa el lugar, mientras sea tomado de tu mano.",
+      "Eres mi casualidad más bonita y mi certeza para siempre.",
+      "Cada latido de mi corazón tiene tu nombre, Catita.",
+      "A tu lado hasta los días normales se vuelven inolvidables.",
+      "Eres mi sonrisa favorita todos los días del año."
+    ];
+    let quoteIndex = 0;
 
-            // 📸 GALERÍA DE RECUERDOS POLAROID (Puedes cambiar URLs, fechas y dedicatorias)
-            memories: [
-                {
-                    image: "https://placehold.co/600x600/ffe4e6/be123c?text=Nuestra+Primera+Cita+%E2%9D%A4%EF%B8%8F",
-                    date: "08 de Agosto, 2025",
-                    caption: "El día en que empezó nuestra mejor aventura juntos."
-                },
-                {
-                    image: "https://placehold.co/600x600/fce7f3/9d174d?text=Risas+Inolvidables+%E2%9C%A8",
-                    date: "Un día cualquiera",
-                    caption: "Tu sonrisa siempre logra iluminar hasta mis días más grises."
-                },
-                {
-                    image: "https://placehold.co/600x600/fff1f2/e11d48?text=Nuestro+Lugar+Favorito+%F0%9F%8C%99",
-                    date: "Bajo las estrellas",
-                    caption: "Contigo cualquier lugar del mundo se siente como hogar."
-                },
-                {
-                    image: "https://placehold.co/600x600/fef3c7/b45309?text=Por+Mil+Aventuras+M%C3%A1s+%F0%9F%92%95",
-                    date: "Siempre juntos",
-                    caption: "Y esto es solo el comienzo de todo lo que nos espera."
-                }
-            ],
+    // 2. CORAZONES FLOTANTES EN EL FONDO
+    function createBackgroundHeart() {
+      const container = document.getElementById("hearts-bg-container");
+      if (!container) return;
 
-            // 💌 CARTA DE AMOR INTERACTIVA
-            letterGreeting: "Mi amor,",
-            letterBody: `Quería hacerte este pequeño detalle porque a veces las palabras del día a día no alcanzan para decirte lo mucho que significas para mí.
+      const heart = document.createElement("div");
+      heart.classList.add("floating-heart");
+      const icons = ["❤️", "💖", "💕", "💗", "🌸"];
+      heart.innerText = icons[Math.floor(Math.random() * icons.length)];
 
-Desde que llegaste a mi vida, cada momento se volvió más especial. Gracias por tu cariño, por tu paciencia, por escucharme y por ser mi compañía favorita en cada paso.
+      const size = Math.random() * 16 + 12; // 12px a 28px
+      const left = Math.random() * 100; // 0% a 100vw
+      const duration = Math.random() * 6 + 7; // 7s a 13s
 
-Cada foto aquí guardada es un pedacito de felicidad que construimos juntos, y no puedo esperar por todas las nuevas memorias que seguiremos creando.`,
-            letterSignature: "Con todo mi corazón, tuyo ❤️"
-        };
+      heart.style.left = `${left}vw`;
+      heart.style.fontSize = `${size}px`;
+      heart.style.animationDuration = `${duration}s`;
 
-        // Clave para guardar personalizaciones en localStorage del navegador
-        const STORAGE_KEY = "detalle_romantico_config_v1";
-        let appConfig = cargarConfiguracion();
-        let timerInterval = null;
-        let loveClickCount = 0;
+      container.appendChild(heart);
 
-        /**
-         * Carga la configuración guardada en el navegador o usa la de por defecto
-         */
-        function cargarConfiguracion() {
-            try {
-                const saved = localStorage.getItem(STORAGE_KEY);
-                if (saved) {
-                    return { ...CONFIGURACION_POR_DEFECTO, ...JSON.parse(saved) };
-                }
-            } catch (e) {
-                console.warn("No se pudo leer localStorage, usando configuración por defecto.");
-            }
-            return JSON.parse(JSON.stringify(CONFIGURACION_POR_DEFECTO));
+      setTimeout(() => {
+        heart.remove();
+      }, duration * 1000);
+    }
+
+    setInterval(createBackgroundHeart, 650);
+
+    // 3. LLUVIA / EXPLOSIÓN DE CORAZONES
+    function spawnHeartRain(originX = window.innerWidth / 2, originY = window.innerHeight / 2, count = 28) {
+      const emojis = ["❤️", "💖", "💘", "💝", "💕", "✨"];
+      for (let i = 0; i < count; i++) {
+        const el = document.createElement("div");
+        el.className = "burst-heart";
+        el.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+        el.style.left = `${originX}px`;
+        el.style.top = `${originY}px`;
+        el.style.fontSize = `${Math.random() * 18 + 16}px`;
+
+        const angle = Math.random() * Math.PI * 2;
+        const velocity = Math.random() * 240 + 80;
+        const tx = Math.cos(angle) * velocity;
+        const ty = Math.sin(angle) * velocity - 80;
+        const rot = (Math.random() - 0.5) * 360;
+
+        el.style.setProperty("--tx", `${tx}px`);
+        el.style.setProperty("--ty", `${ty}px`);
+        el.style.setProperty("--rot", `${rot}deg`);
+
+        document.body.appendChild(el);
+        setTimeout(() => el.remove(), 2600);
+      }
+    }
+
+    // 4. VALIDACIÓN DE CONTRASEÑA Y DESBLOQUEO
+    function checkPassword(e) {
+      e.preventDefault();
+      const input = document.getElementById("password-input");
+      const card = document.getElementById("lock-card");
+      const errorMsg = document.getElementById("error-msg");
+      const entered = input.value.trim();
+
+      if (entered === PASSWORD_CORRECTA) {
+        errorMsg.style.opacity = "0";
+        spawnHeartRain(window.innerWidth / 2, window.innerHeight / 2, 45);
+
+        setTimeout(() => {
+          document.getElementById("lock-screen").classList.add("hidden");
+          const unlocked = document.getElementById("unlocked-content");
+          unlocked.classList.remove("hidden");
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }, 450);
+      } else {
+        // Vibración suave y mensaje tierno
+        card.classList.remove("animate-shake");
+        void card.offsetWidth; // Reiniciar animación
+        card.classList.add("animate-shake");
+        errorMsg.style.opacity = "1";
+        input.value = "";
+        input.focus();
+      }
+    }
+
+    // 5. CONTADOR EN TIEMPO REAL DESDE EL 08/08/2025 18:18:00
+    function updateCounter() {
+      const now = new Date();
+      let diff = now - FECHA_INICIO;
+
+      // Si por alguna razón el reloj del dispositivo está antes de la fecha, mostramos 0
+      if (diff < 0) diff = 0;
+
+      const totalSeconds = Math.floor(diff / 1000);
+      const days = Math.floor(totalSeconds / (3600 * 24));
+      const hours = Math.floor((totalSeconds % (3600 * 24)) / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+
+      document.getElementById("days").innerText = days;
+      document.getElementById("hours").innerText = String(hours).padStart(2, "0");
+      document.getElementById("minutes").innerText = String(minutes).padStart(2, "0");
+      document.getElementById("seconds").innerText = String(seconds).padStart(2, "0");
+    }
+
+    setInterval(updateCounter, 1000);
+    updateCounter();
+
+    // 6. SOBRE DE CARTA ANIMADO
+    let isEnvelopeOpen = false;
+    function toggleEnvelope() {
+      const box = document.getElementById("envelope-box");
+      const letter = document.getElementById("letter-content");
+      const hint = document.getElementById("envelope-hint");
+      const seal = document.getElementById("gold-seal");
+
+      isEnvelopeOpen = !isEnvelopeOpen;
+
+      if (isEnvelopeOpen) {
+        box.classList.add("envelope-open", "bg-white");
+        box.classList.remove("from-rose-100", "to-rose-200");
+        letter.classList.remove("hidden");
+        letter.classList.add("fade-in-up");
+        hint.innerText = "Toca el sello para cerrar";
+        seal.classList.add("scale-90");
+        spawnHeartRain(window.innerWidth / 2, box.getBoundingClientRect().top + 60, 18);
+      } else {
+        box.classList.remove("envelope-open", "bg-white");
+        box.classList.add("from-rose-100", "to-rose-200");
+        letter.classList.add("hidden");
+        hint.innerText = "Toca para abrir";
+        seal.classList.remove("scale-90");
+      }
+    }
+
+    // 7. BOTÓN INTERACTIVO "TE AMO"
+    function triggerLoveBurst(e) {
+      const rect = e.currentTarget.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+
+      spawnHeartRain(centerX, centerY, 24);
+
+      quoteIndex = (quoteIndex + 1) % FRASES_ROMANTICAS.length;
+      const quoteEl = document.getElementById("love-quote");
+      quoteEl.style.opacity = "0";
+      quoteEl.style.transform = "translateY(6px)";
+
+      setTimeout(() => {
+        quoteEl.innerText = `"${FRASES_ROMANTICAS[quoteIndex]}"`;
+        quoteEl.style.opacity = "1";
+        quoteEl.style.transform = "translateY(0)";
+      }, 200);
+    }
+
+    // 8. SUBIDA DE FOTOS (PORTADA Y 4 ESPACIOS POLAROID) + GUARDADO LOCAL
+    function handleCoverUpload(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const dataUrl = e.target.result;
+        const img = document.getElementById("cover-preview");
+        const placeholder = document.getElementById("cover-placeholder");
+        img.src = dataUrl;
+        img.classList.remove("hidden");
+        placeholder.classList.add("hidden");
+        try { localStorage.setItem("catita_cover_photo", dataUrl); } catch (err) {}
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function handlePolaroidUpload(event, index) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const dataUrl = e.target.result;
+        const img = document.getElementById(`photo-img-${index}`);
+        img.src = dataUrl;
+        showPhotoState(index);
+        try { localStorage.setItem(`catita_polaroid_${index}`, dataUrl); } catch (err) {}
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function showPhotoState(index) {
+      const img = document.getElementById(`photo-img-${index}`);
+      const placeholder = document.getElementById(`photo-placeholder-${index}`);
+      if (img && img.getAttribute("src")) {
+        img.classList.remove("hidden");
+        if (placeholder) placeholder.classList.add("hidden");
+      }
+    }
+
+    function showPlaceholderState(index) {
+      const img = document.getElementById(`photo-img-${index}`);
+      const placeholder = document.getElementById(`photo-placeholder-${index}`);
+      if (img) img.classList.add("hidden");
+      if (placeholder) placeholder.classList.remove("hidden");
+    }
+
+    // Cargar fotos guardadas en el navegador si existen
+    window.addEventListener("DOMContentLoaded", () => {
+      try {
+        const savedCover = localStorage.getItem("catita_cover_photo");
+        if (savedCover) {
+          const coverImg = document.getElementById("cover-preview");
+          coverImg.src = savedCover;
+          coverImg.classList.remove("hidden");
+          document.getElementById("cover-placeholder").classList.add("hidden");
         }
 
-        /**
-         * Guarda la configuración actual en localStorage
-         */
-        function guardarConfiguracion() {
-            try {
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(appConfig));
-            } catch (e) {
-                console.warn("El almacenamiento local está lleno (posiblemente por imágenes muy pesadas).");
-            }
+        for (let i = 1; i <= 4; i++) {
+          const savedPhoto = localStorage.getItem(`catita_polaroid_${i}`);
+          const img = document.getElementById(`photo-img-${i}`);
+          if (savedPhoto) {
+            img.src = savedPhoto;
+            showPhotoState(i);
+          } else if (img.getAttribute("src") && img.getAttribute("src").trim() !== "") {
+            showPhotoState(i);
+          }
         }
+      } catch (err) {}
+    });
 
-        /**
-         * ========================================================================
-         * 2. INICIALIZACIÓN Y RENDERIZADO DE LA INTERFAZ
-         * ========================================================================
-         */
-        function aplicarConfiguracionEnUI() {
-            // Pantalla de bloqueo
-            document.getElementById("lock-title").textContent = appConfig.lockTitle;
-            document.getElementById("lock-hint").textContent = appConfig.lockHint;
+    // 9. MODAL LIGHTBOX PARA VER FOTOS EN GRANDE
+    function openLightbox(src, caption) {
+      if (!src) return;
+      const modal = document.getElementById("lightbox-modal");
+      document.getElementById("lightbox-img").src = src;
+      document.getElementById("lightbox-caption").innerText = caption;
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+    }
 
-            const coverImg = document.getElementById("cover-photo-img");
-            const coverPlaceholder = document.getElementById("cover-photo-placeholder");
-
-            if (appConfig.coverPhoto && appConfig.coverPhoto.trim() !== "") {
-                coverImg.src = appConfig.coverPhoto;
-                coverImg.classList.remove("hidden");
-                coverPlaceholder.classList.add("hidden");
-            } else {
-                coverImg.classList.add("hidden");
-                coverPlaceholder.classList.remove("hidden");
-            }
-
-            // Contenido principal
-            document.getElementById("main-heading").textContent = appConfig.mainHeading;
-            document.getElementById("couple-subtitle").textContent = appConfig.coupleSubtitle;
-
-            // Carta
-            document.getElementById("letter-greeting").textContent = appConfig.letterGreeting;
-            document.getElementById("letter-body-text").textContent = appConfig.letterBody;
-            document.getElementById("letter-signature").textContent = appConfig.letterSignature;
-
-            // Galería Polaroid
-            renderizarGaleriaPolaroid();
-
-            // Reiniciar contador
-            iniciarContadorTiempoJuntos();
-        }
-
-        /**
-         * Renderiza las tarjetas estilo Polaroid con ligera rotación artística
-         */
-        function renderizarGaleriaPolaroid() {
-            const grid = document.getElementById("polaroid-grid");
-            grid.innerHTML = "";
-
-            const rotaciones = ["-rotate-2", "rotate-2", "rotate-1", "-rotate-1"];
-
-            appConfig.memories.forEach((item, index) => {
-                const rot = rotaciones[index % rotaciones.length];
-                const card = document.createElement("article");
-                card.className = `polaroid-card rounded-xl cursor-pointer ${rot}`;
-                card.innerHTML = `
-                    <div class="aspect-square w-full overflow-hidden rounded-lg bg-rose-50 mb-3">
-                        <img src="${item.image}" 
-                             alt="${item.caption}" 
-                             onerror="this.src='https://placehold.co/600x600/ffe4e6/be123c?text=Recuerdo+%E2%9D%A4%EF%B8%8F'"
-                             class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
-                    </div>
-                    <div class="text-center px-1">
-                        <span class="block text-[10px] font-semibold uppercase tracking-widest text-rose-400">${item.date}</span>
-                        <p class="font-handwriting text-xl text-rose-950 leading-snug mt-0.5">${item.caption}</p>
-                    </div>
-                `;
-
-                // Al hacer clic, abre el modal ampliado
-                card.addEventListener("click", () => abrirModalFoto(item));
-                grid.appendChild(card);
-            });
-        }
-
-        /**
-         * ========================================================================
-         * 3. LÓGICA DE CONTRASEÑA Y DESBLOQUEO
-         * ========================================================================
-         */
-        const unlockForm = document.getElementById("unlock-form");
-        const passwordInput = document.getElementById("password-input");
-        const errorMessage = document.getElementById("error-message");
-        const lockCard = document.getElementById("lock-card");
-
-        unlockForm.addEventListener("submit", (e) => {
-            e.preventDefault();
-            const valorIngresado = passwordInput.value.trim();
-
-            if (valorIngresado.toLowerCase() === appConfig.password.toLowerCase()) {
-                desbloquearExperiencia();
-            } else {
-                // Contraseña incorrecta: vibración suave y mensaje tierno
-                errorMessage.classList.remove("opacity-0");
-                lockCard.classList.remove("shake-error");
-                void lockCard.offsetWidth; // Reinicia animación CSS
-                lockCard.classList.add("shake-error");
-                passwordInput.value = "";
-                passwordInput.focus();
-            }
-        });
-
-        passwordInput.addEventListener("input", () => {
-            errorMessage.classList.add("opacity-0");
-        });
-
-        function desbloquearExperiencia() {
-            const lockScreen = document.getElementById("lock-screen");
-            const mainContent = document.getElementById("main-content");
-
-            // Celebración de corazones y confeti
-            lanzarExplosionCorazones(45);
-
-            // Transición suave de salida de pantalla de bloqueo
-            lockScreen.style.opacity = "0";
-            lockScreen.style.transform = "scale(0.95)";
-
-            setTimeout(() => {
-                lockScreen.classList.add("hidden");
-                mainContent.classList.remove("hidden");
-                
-                // Forzar reflow para transición de opacidad
-                void mainContent.offsetWidth;
-                mainContent.classList.remove("opacity-0");
-                window.scrollTo({ top: 0, behavior: "smooth" });
-            }, 550);
-        }
-
-        /**
-         * ========================================================================
-         * 4. CONTADOR DE TIEMPO JUNTOS EN TIEMPO REAL
-         * ========================================================================
-         */
-        function iniciarContadorTiempoJuntos() {
-            if (timerInterval) clearInterval(timerInterval);
-
-            function actualizarReloj() {
-                const inicio = new Date(appConfig.startDate).getTime();
-                const ahora = Date.now();
-                let diferencia = ahora - inicio;
-
-                // Si la fecha configurada es futura, mostramos 0 en todo
-                if (isNaN(inicio) || diferencia < 0) diferencia = 0;
-
-                const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
-                const horas = Math.floor((diferencia / (1000 * 60 * 60)) % 24);
-                const minutos = Math.floor((diferencia / 1000 / 60) % 60);
-                const segundos = Math.floor((diferencia / 1000) % 60);
-
-                document.getElementById("timer-days").textContent = dias;
-                document.getElementById("timer-hours").textContent = String(horas).padStart(2, "0");
-                document.getElementById("timer-minutes").textContent = String(minutos).padStart(2, "0");
-                document.getElementById("timer-seconds").textContent = String(segundos).padStart(2, "0");
-            }
-
-            actualizarReloj();
-            timerInterval = setInterval(actualizarReloj, 1000);
-        }
-
-        /**
-         * ========================================================================
-         * 5. INTERACTIVIDAD: SOBRE DE CARTA, MODAL DE FOTOS Y LLUVIA DE CORAZONES
-         * ========================================================================
-         */
-        // Sobre interactivo
-        const envelopeContainer = document.getElementById("envelope-container");
-        const envelopeBox = document.getElementById("envelope-box");
-        const envelopeSeal = document.getElementById("envelope-seal");
-        const envelopeClosedBody = document.getElementById("envelope-closed-body");
-        const letterContent = document.getElementById("letter-content");
-        const envelopeInstruction = document.getElementById("envelope-instruction");
-        let isEnvelopeOpen = false;
-
-        envelopeContainer.addEventListener("click", () => {
-            if (!isEnvelopeOpen) {
-                isEnvelopeOpen = true;
-                envelopeBox.classList.add("envelope-open");
-                envelopeSeal.classList.add("opacity-0", "scale-0");
-                
-                setTimeout(() => {
-                    envelopeClosedBody.classList.add("hidden");
-                    document.getElementById("envelope-flap").classList.add("hidden");
-                    letterContent.classList.remove("hidden");
-                    envelopeInstruction.textContent = "Hecho con todo mi amor para ti ❤️";
-                    lanzarExplosionCorazones(20);
-                }, 320);
-            }
-        });
-
-        // Modal de foto ampliada
-        const photoModal = document.getElementById("photo-modal");
-        function abrirModalFoto(item) {
-            document.getElementById("modal-img").src = item.image;
-            document.getElementById("modal-date").textContent = item.date;
-            document.getElementById("modal-caption").textContent = item.caption;
-            photoModal.classList.remove("hidden");
-            photoModal.classList.add("flex");
-        }
-
-        document.getElementById("close-photo-modal").addEventListener("click", () => {
-            photoModal.classList.add("hidden");
-            photoModal.classList.remove("flex");
-        });
-        photoModal.addEventListener("click", (e) => {
-            if (e.target === photoModal) {
-                photoModal.classList.add("hidden");
-                photoModal.classList.remove("flex");
-            }
-        });
-
-        // Botón final "Te amo" -> Lluvia de corazones
-        const loveRainBtn = document.getElementById("love-rain-btn");
-        const loveCounterMsg = document.getElementById("love-counter-msg");
-        const frasesTiernas = [
-            "¡Yo te amo mucho más! ❤️",
-            "Eres lo mejor que me ha pasado ✨",
-            "Contigo siempre, en todas 💖",
-            "Mi corazón es tuyo hoy y siempre 🥰",
-            "¡Infinitos te amo para ti! 💕"
-        ];
-
-        loveRainBtn.addEventListener("click", () => {
-            lanzarExplosionCorazones(40);
-            const frase = frasesTiernas[loveClickCount % frasesTiernas.length];
-            loveCounterMsg.textContent = frase;
-            loveClickCount++;
-        });
-
-        /**
-         * ========================================================================
-         * 6. EFECTOS VISUALES: CORAZONES FLOTANTES Y EXPLOSIÓN DE CONFETI
-         * ========================================================================
-         */
-        function iniciarCorazonesFondo() {
-            const container = document.getElementById("floating-hearts-container");
-            const emojis = ["❤️", "💕", "💖", "💗", "✨"];
-
-            setInterval(() => {
-                const heart = document.createElement("span");
-                heart.className = "floating-heart";
-                heart.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-                heart.style.left = `${Math.random() * 96}vw`;
-                heart.style.fontSize = `${12 + Math.random() * 14}px`;
-                const duracion = 7 + Math.random() * 6;
-                heart.style.animationDuration = `${duracion}s`;
-                container.appendChild(heart);
-
-                setTimeout(() => heart.remove(), duracion * 1000);
-            }, 900);
-        }
-
-        function lanzarExplosionCorazones(cantidad = 30) {
-            const simbolos = ["❤️", "💖", "💕", "💗", "🌸", "✨"];
-            for (let i = 0; i < cantidad; i++) {
-                const part = document.createElement("span");
-                part.className = "burst-particle";
-                part.textContent = simbolos[Math.floor(Math.random() * simbolos.length)];
-                part.style.fontSize = `${16 + Math.random() * 18}px`;
-                
-                const startX = Math.random() * window.innerWidth;
-                const startY = -30 - Math.random() * 120;
-                part.style.left = `${startX}px`;
-                part.style.top = `${startY}px`;
-                document.body.appendChild(part);
-
-                const driftX = (Math.random() - 0.5) * 160;
-                const endY = window.innerHeight + 60;
-                const rotation = (Math.random() - 0.5) * 540;
-                const duration = 2200 + Math.random() * 1800;
-
-                const anim = part.animate([
-                    { transform: `translate(0, 0) rotate(0deg)`, opacity: 1 },
-                    { transform: `translate(${driftX}px, ${endY}px) rotate(${rotation}deg)`, opacity: 0.2 }
-                ], {
-                    duration: duration,
-                    easing: "cubic-bezier(0.25, 0.46, 0.45, 0.94)"
-                });
-
-                anim.onfinish = () => part.remove();
-            }
-        }
-
-        /**
-         * ========================================================================
-         * 7. SUBIDA DE FOTOS LOCAL Y PANEL DE PERSONALIZACIÓN
-         * ========================================================================
-         */
-        // Helper para comprimir imágenes locales y que quepan sin problemas en memoria
-        function procesarImagenLocal(file, callback) {
-            const reader = new FileReader();
-            reader.onload = (event) => {
-                const img = new Image();
-                img.onload = () => {
-                    const canvas = document.createElement("canvas");
-                    const MAX_SIZE = 800;
-                    let width = img.width;
-                    let height = img.height;
-
-                    if (width > height && width > MAX_SIZE) {
-                        height *= MAX_SIZE / width;
-                        width = MAX_SIZE;
-                    } else if (height > MAX_SIZE) {
-                        width *= MAX_SIZE / height;
-                        height = MAX_SIZE;
-                    }
-
-                    canvas.width = width;
-                    canvas.height = height;
-                    const ctx = canvas.getContext("2d");
-                    ctx.drawImage(img, 0, 0, width, height);
-                    callback(canvas.toDataURL("image/jpeg", 0.82));
-                };
-                img.src = event.target.result;
-            };
-            reader.readAsDataURL(file);
-        }
-
-        // Subida rápida desde la pantalla de bloqueo
-        document.getElementById("quick-cover-upload").addEventListener("change", (e) => {
-            const file = e.target.files[0];
-            if (!file) return;
-            procesarImagenLocal(file, (dataUrl) => {
-                appConfig.coverPhoto = dataUrl;
-                guardarConfiguracion();
-                aplicarConfiguracionEnUI();
-            });
-        });
-
-        // Lógica del Modal Personalizador
-        const customizerModal = document.getElementById("customizer-modal");
-
-        document.getElementById("open-customizer-btn").addEventListener("click", () => {
-            document.getElementById("cfg-password").value = appConfig.password;
-            document.getElementById("cfg-start-date").value = appConfig.startDate.slice(0, 16);
-            document.getElementById("cfg-hint").value = appConfig.lockHint;
-            document.getElementById("cfg-lock-title").value = appConfig.lockTitle;
-            document.getElementById("cfg-cover-url").value = appConfig.coverPhoto.startsWith("data:") ? "" : appConfig.coverPhoto;
-            document.getElementById("cfg-letter-greeting").value = appConfig.letterGreeting;
-            document.getElementById("cfg-letter-body").value = appConfig.letterBody;
-            document.getElementById("cfg-letter-signature").value = appConfig.letterSignature;
-
-            // Renderizar campos de las 4 fotos
-            const memList = document.getElementById("cfg-memories-list");
-            memList.innerHTML = "";
-            appConfig.memories.forEach((mem, idx) => {
-                const div = document.createElement("div");
-                div.className = "p-3 rounded-2xl bg-rose-50/70 border border-rose-100 space-y-2";
-                div.innerHTML = `
-                    <div class="flex items-center justify-between">
-                        <span class="text-xs font-bold text-rose-800">Recuerdo #${idx + 1}</span>
-                        <label class="px-2.5 py-1 rounded-lg bg-white border border-rose-200 text-rose-700 text-[11px] font-semibold cursor-pointer hover:bg-rose-100">
-                            Subir foto
-                            <input type="file" data-mem-file="${idx}" accept="image/*" class="hidden">
-                        </label>
-                    </div>
-                    <input type="text" data-mem-date="${idx}" value="${mem.date}" placeholder="Fecha" class="w-full px-2.5 py-1.5 rounded-lg border border-rose-200 text-xs bg-white">
-                    <input type="text" data-mem-caption="${idx}" value="${mem.caption}" placeholder="Dedicatoria" class="w-full px-2.5 py-1.5 rounded-lg border border-rose-200 text-xs bg-white">
-                `;
-                memList.appendChild(div);
-
-                // Listener para subir foto local en cada Polaroid
-                div.querySelector(`[data-mem-file="${idx}"]`).addEventListener("change", (ev) => {
-                    const f = ev.target.files[0];
-                    if (!f) return;
-                    procesarImagenLocal(f, (dataUrl) => {
-                        appConfig.memories[idx].image = dataUrl;
-                    });
-                });
-            });
-
-            customizerModal.classList.remove("hidden");
-            customizerModal.classList.add("flex");
-        });
-
-        document.getElementById("cfg-cover-file").addEventListener("change", (e) => {
-            const file = e.target.files[0];
-            if (!file) return;
-            procesarImagenLocal(file, (dataUrl) => {
-                appConfig.coverPhoto = dataUrl;
-            });
-        });
-
-        document.getElementById("close-customizer-btn").addEventListener("click", () => {
-            customizerModal.classList.add("hidden");
-            customizerModal.classList.remove("flex");
-        });
-
-        document.getElementById("save-config-btn").addEventListener("click", () => {
-            appConfig.password = document.getElementById("cfg-password").value.trim() || "0808";
-            const rawDate = document.getElementById("cfg-start-date").value;
-            if (rawDate) appConfig.startDate = rawDate.length === 16 ? `${rawDate}:00` : rawDate;
-
-            appConfig.lockHint = document.getElementById("cfg-hint").value;
-            appConfig.lockTitle = document.getElementById("cfg-lock-title").value;
-
-            const coverUrlInput = document.getElementById("cfg-cover-url").value.trim();
-            if (coverUrlInput !== "") appConfig.coverPhoto = coverUrlInput;
-
-            appConfig.memories.forEach((mem, idx) => {
-                mem.date = document.querySelector(`[data-mem-date="${idx}"]`).value;
-                mem.caption = document.querySelector(`[data-mem-caption="${idx}"]`).value;
-            });
-
-            appConfig.letterGreeting = document.getElementById("cfg-letter-greeting").value;
-            appConfig.letterBody = document.getElementById("cfg-letter-body").value;
-            appConfig.letterSignature = document.getElementById("cfg-letter-signature").value;
-
-            guardarConfiguracion();
-            aplicarConfiguracionEnUI();
-
-            customizerModal.classList.add("hidden");
-            customizerModal.classList.remove("flex");
-        });
-
-        document.getElementById("reset-config-btn").addEventListener("click", () => {
-            localStorage.removeItem(STORAGE_KEY);
-            appConfig = JSON.parse(JSON.stringify(CONFIGURACION_POR_DEFECTO));
-            aplicarConfiguracionEnUI();
-            customizerModal.classList.add("hidden");
-            customizerModal.classList.remove("flex");
-        });
-
-        // Arrancar aplicación al cargar la página
-        window.addEventListener("DOMContentLoaded", () => {
-            aplicarConfiguracionEnUI();
-            iniciarCorazonesFondo();
-        });
-    </script>
+    function closeLightbox() {
+      const modal = document.getElementById("lightbox-modal");
+      modal.classList.add("hidden");
+      modal.classList.remove("flex");
+    }
+  </script>
 </body>
 </html>
